@@ -40,7 +40,8 @@ from builtins import str
 from builtins import range
 from builtins import object
 import six
-from sphinx.directives import Directive
+# from sphinx.directives import Directive
+from sphinx.util.docutils import SphinxDirective
 from docutils.parsers.rst.directives import unchanged
 from docutils.statemachine import string2lines
 from sphinx.util.console import bold
@@ -1285,7 +1286,7 @@ def fmt_indent(string):
     #pass
 
 
-class FortranAutoModuleDirective(Directive):
+class FortranAutoModuleDirective(SphinxDirective):
     has_content = True
     option_spec = dict(title_underline=unchanged, indent=fmt_indent,
         subsection_type=unchanged)
@@ -1334,7 +1335,7 @@ class FortranAutoModuleDirective(Directive):
         return []
 
 
-class FortranAutoObjectDirective(Directive):
+class FortranAutoObjectDirective(SphinxDirective):
     """Generic directive for fortran object auto-documentation
 
     Redefine :attr:`_warning` and :attr:`_objtype` attribute when subcassling.
@@ -1412,7 +1413,7 @@ class FortranAutoVariableDirective(FortranAutoObjectDirective):
     _warning = 'Wrong variable name: %s'
     _objtype = 'variable'
 
-class FortranAutoProgramDirective(Directive):
+class FortranAutoProgramDirective(SphinxDirective):
     has_content = False
     option_spec = {}
     required_arguments = 1
@@ -1444,7 +1445,7 @@ class FortranAutoProgramDirective(Directive):
 
         return []
 
-class FortranAutoSrcfileDirective(Directive):
+class FortranAutoSrcfileDirective(SphinxDirective):
     has_content = False
     option_spec = dict(search_mode=unchanged, objtype=unchanged)
     required_arguments = 1

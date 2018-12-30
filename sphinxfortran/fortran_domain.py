@@ -729,7 +729,7 @@ class WithFortranDocFieldTransformer(object):
             self.domain, self.objtype = self.name.split(':', 1)
         else:
             self.domain, self.objtype = '', self.name
-        self.env = self.state.document.settings.env
+        # self.env = self.state.document.settings.env
         self.indexnode = addnodes.index(entries=[])
 
         node = addnodes.desc()
